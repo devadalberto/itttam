@@ -1,5 +1,13 @@
-# django4_quickstart_template
-## docker-compose version
+# itttam
+Information Technology and Tools for Track and Asset Management
+
+The general idea is to have a 'Central Site' or WebApp where we can find it "ALL" 
+
+Below a quick explanation on how to run the docker-compose files (for a prod or a dev environment)
+
+
+
+## Running the containers
 
 ### This is a "prod config" by default, however will show both ways to launch the containers as dev and as prod
 
@@ -49,15 +57,17 @@ docker-compose -f docker-compose.dev.yml up --build
 This Dev config runs on port 9000 and django uses it's build in webserver
 ---
 
-### ToDo
 
-- [X] Doc for PROD deployment
+## ToDo
+
+- [ ] Create basic ITAM functionality
+- [ ] Keep adding on top of it
+- [ ] Keep documentation up to date
 - [X] Modify deployments so they use 2 files: .env & .devenv files
-- [X] Finish documentation for DEV deployment
 - [ ] Fix code to uncomment the flake8 on the app/Dockerfile
 - [ ] Optimize image size
 - [ ] Check for Security
-- [ ] Automate deployment
+- [ ] Automate further the deployment
 
 ### Credits
 
@@ -65,3 +75,8 @@ This Dev config runs on port 9000 and django uses it's build in webserver
 
 1. https://github.com/cookiecutter/cookiecutter-django
 2. https://github.com/veryacademy/django-ecommerce-project-v2
+3. https://github.com/allegro/ralph
+   
+   
+Used this as "template" for the django project:
+https://github.com/devadalberto/django4_quickstart_template

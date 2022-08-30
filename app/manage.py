@@ -5,8 +5,8 @@ import sys
 import environ
 
 # change this filename when running dev/prod
-# env_file_name = ".devenv"
-env_file_name = ".env"
+env_file_name = ".devenv"
+# env_file_name = ".env"
 
 env = environ.Env(
     # set casting, default value
