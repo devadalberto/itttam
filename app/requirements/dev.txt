@@ -1,0 +1,14 @@
+-r base.txt
+
+# Pillow
+pylint-django
+pytest-django
+
+
+
+# make sure to check flake8
+# https://ljvmiranda921.github.io/notebook/2018/06/21/precommits-using-black-and-flake8/
+#flake8
+#flake8-isort
+#coverage
+#pre-commit

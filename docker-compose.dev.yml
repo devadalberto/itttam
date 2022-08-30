@@ -1,0 +1,58 @@
+version: "3.9"
+services:
+  dev-web:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.dev
+    container_name: dev-web
+    image: django-dev-devadalberto:0.0.2
+    volumes:
+      - ./app/:/usr/src/app/
+    env_file:
+      - .devenv
+    ports:
+      - "9000:9000"
+    depends_on:
+      - devdb
+    links:
+      - devdb:db
+    networks:
+      - dev-network
+
+  pgadmin:
+    build: ./pgadmin
+    container_name: pgadmin4
+    image: pgadmin4-dev-devadalberto:0.0.2
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=pgadmin@pgadmin.org
+      - PGADMIN_DEFAULT_PASSWORD=insecurePassw0rd!
+    ports:
+      - "9050:80"
+    restart: always
+    depends_on:
+      - devdb
+    volumes:
+      - pgadmin:/root/.pgadmin
+
+  devdb:
+    build: ./database
+    container_name: devdb
+    image: postgres-dev-devadalberto:0.0.2
+
+    env_file:
+      - .devenv
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - data-dev:/var/lib/postgresql/data
+    networks:
+      - dev-network
+
+volumes:
+  data-dev:
+  pgadmin:
+
+networks:
+  dev-network:
+    driver: bridge

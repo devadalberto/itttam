@@ -1,0 +1,44 @@
+version: "3.9"
+services:
+  web:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    # command: gunicorn core.wsgi:application --bind 0.0.0.0:8000
+    container_name: web
+    image: django-prod-devadalberto:0.0.2
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
+    expose:
+      - 8000
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+
+  db:
+    build: ./database
+    container_name: db
+    image: postgres-prod-devadalberto:0.0.2
+    restart: always
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    image: nginx-prod-devadalberto:0.0.2
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+    ports:
+      - 1337:80
+    depends_on:
+      - web
+
+volumes:
+  db-data:
+  static_volume:
+  media_volume:

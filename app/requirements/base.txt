@@ -1,0 +1,28 @@
+black
+crispy_bootstrap5
+django
+django-cors-headers
+django-crispy-forms
+django-environ
+django-extensions
+django-model-utils
+django-mptt
+django-tree-queries
+djangorestframework
+mypy
+psycopg2
+python-slugify
+pytz
+six
+Pillow
+
+# project specific
+# ie - if you need excel reports you will install a set of packages like the
+# ones below
+# ----------------------------------------------------------------------------
+# ldap3
+# django-excel
+# pyexcel-ods
+# odfpy
+# pyexcel-xlsxw
+# pyexcel-xlsx
